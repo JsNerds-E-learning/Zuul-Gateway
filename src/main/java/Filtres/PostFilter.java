@@ -12,7 +12,7 @@ public class PostFilter extends ZuulFilter {
 	 
 	  @Override
 	  public int filterOrder() {
-	    return 1;
+	    return 2;
 	  }
 	 
 	  @Override
@@ -22,7 +22,7 @@ public class PostFilter extends ZuulFilter {
 	 
 	  @Override
 	  public Object run() {
-	   System.out.println("Inside Response Filter");
+	   System.out.println("Inside Response / Post Filter");
 	 	    return null;
 	  }
 	}
