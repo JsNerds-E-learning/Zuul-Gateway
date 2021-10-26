@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 
 //import Filtres.AuthorizationHeaderFilter;
 import Filtres.ErrorFilter;
+import Filtres.MyFallbackProvider;
 import Filtres.PostFilter;
 import Filtres.PreFilter;
 import Filtres.RouteFilter;
@@ -49,6 +50,10 @@ public class ZuulGatewayApplication {
 	@Bean
 	public RouteFilter routeFilter() {
 	    return new RouteFilter();
+	}
+	@Bean
+	public MyFallbackProvider myFallbackProvider() {
+		return new MyFallbackProvider();
 	}
 	
 

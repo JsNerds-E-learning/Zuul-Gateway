@@ -1,6 +1,11 @@
 package Filtres;
 
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletResponse;
+
 import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
 
 
 public class PostFilter extends ZuulFilter {
@@ -22,7 +27,11 @@ public class PostFilter extends ZuulFilter {
 	 
 	  @Override
 	  public Object run() {
-	   System.out.println("Inside Response / Post Filter");
-	 	    return null;
+			RequestContext context = RequestContext.getCurrentContext();
+	    	HttpServletResponse servletResponse = context.getResponse();
+			servletResponse.addHeader("X-Sample", UUID.randomUUID().toString());
+			System.out.println("Inside POST Filter");
+			System.out.println("POST FILTER : ServletResponse :"+servletResponse.getHeader("X-Sample"));
+			return null;
 	  }
 	}
